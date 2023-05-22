@@ -1,5 +1,5 @@
 const mongodb = require('mongodb')
-const ObjectId = mongodb.ObjectID
+const { ObjectId } = require('mongodb');
 
 let movies 
 
@@ -44,6 +44,42 @@ class MoviesDAO{
         catch(e){
             console.error(`Unable to issue find command, ${e}`)
             return { moviesList: [], totalNumMovies: 0}
+        }
+    }
+    // This method will be used to get all reviews from a particular movie
+    static async getMovieById(id){        
+        try{                                                 
+            return await movies.aggregate([
+                {
+                    $match: {
+                        _id: new ObjectId(id),
+                    }
+                }    ,
+                { $lookup:
+                    {
+                        from: 'reviews',
+                        localField: '_id',
+                        foreignField: 'movie_id',
+                        as: 'reviews',
+                    }
+                }       
+            ]).next()            
+        }
+        catch(e){
+            console.error(`something went wrong in getMovieById: ${e}`)
+            throw e
+        }
+    }
+    // This method will be used to get all the distinct ratings.
+    static async getRatings(){
+        let ratings = []
+        try{    
+            ratings = await movies.distinct("rated")
+            return ratings
+        }
+        catch(e){
+            console.error(`Unable to get ratings, ${e}`)
+            return ratings
         }
     }
 }
