@@ -3,6 +3,7 @@ import axios from "axios";
 export class MovieDataService{
     
    getAll(page = 0){ 
+    console.log("getAll");
      return axios.get(`http://localhost:5000/api/movies?page=${page}`)
    }
 
