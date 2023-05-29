@@ -1,0 +1,59 @@
+/* Import Bootstrap */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/* Add your custom styles */
+.App {
+  background-color: #f2e3db;
+}
+
+.movie-card {
+  background-color: #41644a;
+  color: #263a29;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.movie-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.movie-card .card-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.movie-card .card-text {
+  margin-top: 10px;
+}
+
+.movie-card .card-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  color: #e86a33;
+}
+
+.form-container {
+  margin-bottom: 20px;
+}
+
+.form-container .form-group {
+  margin-bottom: 10px;
+}
+
+.form-container .btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination .btn {
+  margin: 0 5px;
+  color: #e86a33;
+}
