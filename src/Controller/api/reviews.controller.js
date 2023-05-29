@@ -18,6 +18,16 @@ const ReviewsDAO = require('../../Model/dao/reviewsDAO.js')
                 review,
                 date
             )
+            console.log("ReviewResponse" + ReviewResponse);
+            var { error } = ReviewResponse
+            if(error){
+                res.status.json({error})
+            }
+ 
+            if(ReviewResponse.modifiedCount === 0){
+             throw new Error ("unable to update review. User may not be original poster")
+            }
+
             res.json({ status: "success "}) 
          }catch(e){
              res.status(500).json({ error: e.message})

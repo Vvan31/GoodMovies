@@ -54,7 +54,7 @@ class MoviesDAO{
                     $match: {
                         _id: new ObjectId(id),
                     }
-                }    ,
+                },
                 { $lookup:
                     {
                         from: 'reviews',
@@ -67,7 +67,7 @@ class MoviesDAO{
         }
         catch(e){
             console.error(`something went wrong in getMovieById: ${e}`)
-            throw e
+            throw eapiPostReview
         }
     }
     // This method will be used to get all the distinct ratings.

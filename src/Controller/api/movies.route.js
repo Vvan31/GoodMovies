@@ -17,7 +17,6 @@ router.route("/id/:id").get(MoviesController.apiGetMovieById)
 router.route("/ratings").get(MoviesController.apiGetRatings)
 
 
-
 router.route("/review") 
   .post(ReviewsController.apiPostReview) 
   .put(ReviewsController.apiUpdateReview) 

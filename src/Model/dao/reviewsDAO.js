@@ -23,8 +23,11 @@ class ReviewsDAO{
                 user_id: user._id,
                 date: date,
                 review: review,
-                movie_id: ObjectId(movieId)
+               /*  movie_id: ObjectId(movieId) */
+                movie_id: movieId
             }
+            console.log("reviewDoc");
+            console.log(reviewDoc);
             return await reviews.insertOne(reviewDoc)
         }
         catch(e){
