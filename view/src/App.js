@@ -34,12 +34,12 @@ function App() {
               <Link to={"/movies"}>Movies</Link>
             </Nav.Link>            
             <Nav.Link>
-            {user ? (
-              <button onClick={logout}>Logout User</button>
-            ) : (
-              <Link to={"/login"}>Login</Link>
-            )}
-          </Nav.Link>
+              {user ? (
+                <button onClick={logout}>Logout User</button>
+              ) : (
+                <Link to={"/login"}>Login</Link>
+              )}
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

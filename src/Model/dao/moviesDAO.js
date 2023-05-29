@@ -1,6 +1,6 @@
 const mongodb = require('mongodb')
 const { ObjectId } = require('mongodb');
-
+const ReviewsDAO = require('./reviewsDAO.js')
 let movies 
 
 class MoviesDAO{ 
@@ -47,29 +47,49 @@ class MoviesDAO{
         }
     }
     // This method will be used to get all reviews from a particular movie
-    static async getMovieById(id){        
-        try{                                                 
+/*     static async getMovieById(id){        
+        try{                          
+            const  reviews = await ReviewsDAO.getMovieReviews(id)                       
             return await movies.aggregate([
                 {
                     $match: {
                         _id: new ObjectId(id),
                     }
                 },
-                { $lookup:
+                reviews
+                 { $lookup:
                     {
                         from: 'reviews',
                         localField: '_id',
                         foreignField: 'movie_id',
                         as: 'reviews',
                     }
-                }       
+                }      
             ]).next()            
         }
         catch(e){
             console.error(`something went wrong in getMovieById: ${e}`)
             throw eapiPostReview
         }
-    }
+    }  */
+    static async getMovieById(id) {
+        try {
+          const movie = await movies.findOne({ _id: new ObjectId(id) });
+          
+          if (!movie) {
+            return null; // Movie not found
+          }
+    
+          const reviews = await ReviewsDAO.getMovieReviews(id);
+          movie.reviews = reviews;
+    
+          return movie;
+        } catch (e) {
+          console.error(`Something went wrong in getMovieById: ${e}`);
+          throw e;
+        }
+      }
+
     // This method will be used to get all the distinct ratings.
     static async getRatings(){
         let ratings = []

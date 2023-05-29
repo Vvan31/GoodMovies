@@ -16,6 +16,28 @@ class ReviewsDAO{
         }
     }
 
+
+    static async getMovieReviews(movieId){
+        try{
+            const pipeline = [
+                {
+                    $match: {
+                        movie_id: movieId
+                    }
+                },
+                {
+                    $sort: {
+                        date: -1
+                    }
+                }
+            ]
+            return await reviews.aggregate(pipeline).toArray()
+        }   
+        catch(e){
+            console.error(`unable to get reviews: ${e}`)
+            return { error: e}
+        }
+    }
     static async addReview(movieId, user, review, date){
         try{
             const reviewDoc = {
