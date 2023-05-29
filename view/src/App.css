@@ -30,7 +30,9 @@
   background-color: #e86a33 !important;
   padding-left: 3%;
   color: #f2e3db !important;
+  
 }
+
 .brand{
   color: #242724 !important;
   font-weight: bolder;
@@ -78,11 +80,15 @@
     font-weight: bolder;
     font-size: largeer;
     letter-spacing: 0.1rem;
-    margin-left: 85rem;
   }
   .login:hover{
     color: #f2e3db !important;
     font-weight: bolder;
     font-size: largeer;
   }
+
+.collapse{
+  display: flex;
+  justify-content: space-between;
+}
 }

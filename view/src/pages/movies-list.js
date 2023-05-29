@@ -125,7 +125,7 @@ const MoviesList = (props) => {
                 Search
               </Button>
             </Col>
-            <Col xs={6} sm={4} className="d-flex mb-2">
+            <Col xs={7} sm={5} className="d-flex mb-2">
               <Form.Group className="flex-grow-1 mr-2">
                 <Form.Control as="select" onChange={onChangeSearchRating}>
                   {ratings.map((rating) => (
@@ -135,7 +135,7 @@ const MoviesList = (props) => {
                   ))}
                 </Form.Control>
               </Form.Group>
-              <Button variant="primary" type="button" onClick={findByRating}>
+              <Button variant="primary" type="button" onClick={findByRating} className="btn">
                 Apply Filter
               </Button>
             </Col>

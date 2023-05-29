@@ -29,7 +29,7 @@
 .movie-card .card-link {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+/*   margin-top: 10px; */
   color: #e86a33;
 }
 
@@ -64,7 +64,7 @@
   color: #e86a33;
 }
 
-Button{
+.btn{
     background-color: #e86a33 !important;
     color: #f2e3db !important;
     font-weight: bolder;
@@ -72,5 +72,6 @@ Button{
     letter-spacing: 0.1rem;
     border-radius: 0.5rem;
     border: none;
-    margin: 0 5px;
+    margin-top: 0px;
+/*     margin: 0 5px; */
 }

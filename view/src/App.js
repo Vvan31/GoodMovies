@@ -27,7 +27,7 @@ function App() {
        <Navbar bg="light" expand="lg" className="Navbar">
         <Navbar.Brand className="brand">Movie Reviews</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" className='collapse'>
           <Nav className="mr-auto">
             <Nav.Link className="link">
               <Link to={'/movies'} className="nav-link">
