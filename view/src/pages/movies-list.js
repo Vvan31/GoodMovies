@@ -15,16 +15,10 @@ const MoviesList = props => {
   const [searchRating, setSearchRating] = useState("")
   const [ratings, setRatings] = useState(["All Ratings"])
 
-
-
-
   useEffect(() =>{ 
     retrieveMovies()
     retrieveRatings()
   },[])
-
-
-
 
   const retrieveMovies = () =>{
     console.log("retrieveMovies");

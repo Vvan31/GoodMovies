@@ -16,7 +16,6 @@ router.route("/id/:id").get(MoviesController.apiGetMovieById)
 // can select the ratings from a dropdown menu in the frontend.
 router.route("/ratings").get(MoviesController.apiGetRatings)
 
-
 router.route("/review") 
   .post(ReviewsController.apiPostReview) 
   .put(ReviewsController.apiUpdateReview) 

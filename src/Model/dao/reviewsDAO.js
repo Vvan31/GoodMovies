@@ -1,13 +1,11 @@
 const mongodb = require('mongodb')
-const ObjectId = mongodb.ObjectID
+const { ObjectId } = require('mongodb')
 
 let reviews 
 
 class ReviewsDAO{ 
     static async injectDB(conn){        
-        if(reviews){ 
-            return
-        }
+        if(reviews){ return }
         try{ 
             reviews = await conn.db(process.env.MOVIEREVIEWS_NS).collection('reviews')
         } 
@@ -15,7 +13,6 @@ class ReviewsDAO{
             console.error(`unable to establish connection handle in reviewDAO: ${e}`)
         }
     }
-
 
     static async getMovieReviews(movieId){
         try{
@@ -45,8 +42,8 @@ class ReviewsDAO{
                 user_id: user._id,
                 date: date,
                 review: review,
-               /*  movie_id: ObjectId(movieId) */
-                movie_id: movieId
+              /*   movie_id:new ObjectId(movieId) */
+                movie_id: movieId 
             }
             console.log("reviewDoc");
             console.log(reviewDoc);
@@ -61,7 +58,7 @@ class ReviewsDAO{
     static async updateReview(reviewId, userId, review, date){
         try{
             const updateResponse = await reviews.updateOne(
-                {user_id: userId,_id: ObjectId(reviewId)},
+                {user_id: userId,_id:new ObjectId(reviewId)},
                 {$set:{review:review, date: date}}                                
             )
             return updateResponse
@@ -75,7 +72,7 @@ class ReviewsDAO{
     static async deleteReview(reviewId, userId){
         try{
             const deleteResponse = await reviews.deleteOne({
-              _id: ObjectId(reviewId), 
+              _id:new ObjectId(reviewId), 
               user_id: userId, 
             })
             return deleteResponse
