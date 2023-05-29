@@ -1,0 +1,10 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+ 
+.conntainer {
+  padding: 20px;
+  margin-top: 40px;
+  width: 50%;
+}
+Button{
+    margin: 5%;
+}

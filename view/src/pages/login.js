@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
- 
+
+import '../style/login.css';
 const Login = props => {
   
   const [name, setName] = useState("")
@@ -23,31 +24,35 @@ const Login = props => {
   }  
 
   return(
-    <div>
-      <Form>
-        <Form.Group>
-          <Form.Label>Username</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter username" 
-            value={name} 
-            onChange={onChangeName}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>ID</Form.Label>
-          <Form.Control 
-            type="text" 
-            placeholder="Enter id" 
-            value={id} 
-            onChange={onChangeId}
-          />
-        </Form.Group>        
-        <Button variant="primary" onClick={login}>
-          Submit
-        </Button>
-      </Form>    
-    </div>
+  
+    <div className="d-flex justify-content-center">
+        <div className="container">
+        <Form>
+          <Form.Group>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter username"
+              value={name}
+              onChange={onChangeName}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>ID</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter id"
+              value={id}
+              onChange={onChangeId}
+            />
+          </Form.Group>
+          <Button variant="primary" onClick={login}>
+            Submit
+          </Button>
+        </Form>
+        </div>
+      </div>
+ 
   )
 }
 

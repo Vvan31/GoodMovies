@@ -1,7 +1,6 @@
 /* Import Bootstrap */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-/* Add your custom styles */
 .App {
   background-color: #f2e3db;
 }
@@ -30,21 +29,28 @@
 .movie-card .card-link {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+/*   margin-top: 10px; */
   color: #e86a33;
 }
 
 .form-container {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .form-container .form-group {
   margin-bottom: 10px;
 }
 
+.form-container .input {
+  display: inline-block;
+  width: calc(50% - 15px); /* Adjust the width as needed */
+  margin-right: 15px;
+}
+
 .form-container .btn {
-  display: block;
-  margin: 0 auto;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .pagination {
@@ -56,4 +62,15 @@
 .pagination .btn {
   margin: 0 5px;
   color: #e86a33;
+}
+
+Button{
+    background-color: #e86a33 !important;
+    color: #f2e3db !important;
+    font-weight: bolder;
+    font-size: largeer;
+    letter-spacing: 0.1rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin: 0 5px;
 }

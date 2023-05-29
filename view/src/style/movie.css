@@ -1,0 +1,65 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.App {
+  background-color: #f2e3db;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 20px;
+  margin-top: 40px;
+}
+
+h5 {
+  margin-bottom: 20px;
+}
+
+.plot {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #263a29;
+  color: #f2e3db;
+}
+
+.review {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #41644a;
+  color: #f2e3db;
+  box-shadow: 0 0 10px 0px #263a29;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0px #263a29;
+}
+
+@media screen and (min-width: 705px) {
+  .image {
+    position: fixed;
+    top: 55%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0px #263a29;
+  }
+}
+
+.btn {
+  background-color: #e86a33;
+  color: #f2e3db;
+  border: none;
+  box-shadow: 0 0 10px 0px #263a29;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #e86a33;
+  border: none;
+  box-shadow: 0 0 10px 0px #263a29;
+  transform: scale(1.05);
+  transition: 0.1s;
+}

@@ -10,6 +10,7 @@ import Button from 'react-bootstrap/Button';
 //import Media from 'react-bootstrap/Media';
 import moment from 'moment';
 
+import '../style/movie.css';
 const Movie = props => {
   
   const [movie, setMovie] = useState({
@@ -51,57 +52,67 @@ const Movie = props => {
 
 
   return (
-    <div>  
-      <Container>
+    <div className='App'>
+      <Container className='container'>
         <Row>
-          <Col>
-            <Image src={movie.poster+"/100px250"} fluid />            
+          <Col xs={12} md={6}>
+             {movie.poster ? (
+        <Image src={movie.poster + "/100px250"} fluid className='image' />
+          ) : (
+        <Image fluid className='image' src={'https://media.giphy.com/media/x5XGS2XRUcYtc9C2fp/giphy.gif'} /> // Replace `genericPictureUrl` with the URL of your generic picture
+        )}
+
           </Col>
-          <Col>
-            <Card>
+          <Col xs={12} md={6}>
+            <Card className='plot'>
               <Card.Header as="h5">{movie.title}</Card.Header>
-              <Card.Body>                  
-                <Card.Text>
-                  {movie.plot}
-                </Card.Text>
-  		        {props.user &&
-                <Link to={"/movies/" + props.match.params.id + "/review"}>Add Review</Link>}
+              <Card.Body>
+                <Card.Text>{movie.plot}</Card.Text>
+                {props.user && (
+                  <Link to={"/movies/" + props.match.params.id + "/review"} className='btn'>
+                    Add Review
+                  </Link>
+                )}
               </Card.Body>
             </Card>
-            <br></br>
+            <br />
             <h2>Reviews</h2>
-            <br></br>            
-            {movie.reviews.map((review, index)=>{
+            <br />
+            {movie.reviews.map((review, index) => {
               return (
-                <Card key={index}>
+                <Card key={index} className='review'>
                   <Card.Body>
-                  <h5>{review.name + " reviewed on "} {moment(review.date).format("Do MMMM YYYY")}</h5>             
-
+                    <h5>
+                      {review.name + " reviewed on "} {moment(review.date).format("Do MMMM YYYY")}
+                    </h5>
                     <p>{review.review}</p>
-                    {props.user && props.user.id === review.user_id && 
-                      <Row>                          
-                        <Col><Link to={{
-                          pathname:"/movies/"+props.match.params.id+"/review", 
-                          state: {currentReview: review}
-                          }}>Edit</Link>
+                    {props.user && props.user.id === review.user_id && (
+                      <Row>
+                        <Col>
+                          <Link
+                            to={{
+                              pathname: "/movies/" + props.match.params.id + "/review",
+                              state: { currentReview: review }
+                            }}
+                            className='btn'
+                          >
+                            Edit
+                          </Link>
                         </Col>
                         <Col>
                           <Button variant="link" onClick={() => deleteReview(review._id, index)}>
                             Delete
                           </Button>
                         </Col>
-                        
                       </Row>
-                    }
+                    )}
                   </Card.Body>
-                </Card> 
-              )
-            })}                         
-
-          </Col>          
+                </Card>
+              );
+            })}
+          </Col>
         </Row>
-      </Container>    
-
+      </Container>
     </div>
   );
 }

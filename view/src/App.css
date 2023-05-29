@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .App-logo {
@@ -15,7 +16,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+ 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,15 +25,64 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.Navbar{
+  background-color: #e86a33 !important;
+  padding-left: 3%;
+  color: #f2e3db !important;
+}
+.brand{
+  color: #242724 !important;
+  font-weight: bolder;
+  font-size: largeer;
+  letter-spacing: 0.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.link{
+  color: #f2e3db !important;
+  font-weight: bolder;
+  font-size: largeer;
+  letter-spacing: 0.1rem;
+}
+
+.link:hover{
+  color: #d2f3d2 !important;
+  font-weight: bolder;
+  font-size: largeer;
+}
+
+.login{
+  font-weight: bolder;
+  font-size: largeer;
+  letter-spacing: 0.1rem;
+}
+
+.login:hover{
+  color: #f2e3db !important;
+  font-weight: bolder;
+  font-size: largeer;
+  transform: scale(1.05);
+  transition: 0.1s;
+}
+
+@media screen and (min-width: 768px) {
+  .link:hover{
+    color: #d2f3d2 !important;
+    font-weight: bolder;
+    font-size: largeer;
+    transform: scale(1.05);
+    transition: 0.1s;
+  }  
+  
+  .login{
+    font-weight: bolder;
+    font-size: largeer;
+    letter-spacing: 0.1rem;
+    margin-left: 85rem;
   }
-  to {
-    transform: rotate(360deg);
+  .login:hover{
+    color: #f2e3db !important;
+    font-weight: bolder;
+    font-size: largeer;
   }
 }
