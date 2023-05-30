@@ -11,6 +11,9 @@ import Card from 'react-bootstrap/Card';
 import '../style/movie-list.css';
 import { animateScroll } from 'react-scroll';
 
+//Components
+import MovieCard from '../components/MovieCard';
+
 const MoviesList = (props) => {
   const [movies, setMovies] = useState([]);
   const [searchTitle, setSearchTitle] = useState('');
@@ -142,25 +145,9 @@ const MoviesList = (props) => {
           </Row>
         </Form>
         <Row>
-        {movies.map((movie) => (
-  <Col key={movie._id} className="movie-card">
-    <Card style={{ width: '18rem' }}>
-      {movie.poster ? (
-        <Card.Img src={movie.poster + '/100px180'} />
-      ) : (
-        <Card.Img src={'https://media.giphy.com/media/x5XGS2XRUcYtc9C2fp/giphy.gif'} /> // Replace `genericPictureUrl` with the URL of your generic picture
-      )}
-      <Card.Body>
-        <Card.Title>{movie.title}</Card.Title>
-        <Card.Text>Rating: {movie.rated}</Card.Text>
-        <Card.Text>{movie.plot}</Card.Text>
-        <Link to={'/movies/' + movie._id} className="card-link">
-          View Reviews
-        </Link>
-      </Card.Body>
-    </Card>
-  </Col>
-))}
+          {movies.map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
         </Row>
         <br />
         <div className="pagination">

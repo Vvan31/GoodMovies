@@ -1,0 +1,8 @@
+.movie-card{
+    min-height:150px;
+}
+
+.card-link{
+    color: rgb(157, 62, 62) !important;
+    text-decoration: none;
+}
