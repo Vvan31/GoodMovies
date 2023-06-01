@@ -1,56 +1,40 @@
 /* Import Bootstrap */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
+/* Use root values */
+:root{
+  --color-white: #ccc;
+  --color-black: #303030;
+  --color-purple: #86208f;
+  --color-brown: #884a30;
+}
 .App {
-  background-color: #f2e3db;
+  background-color: var(--color-black) ;
+  min-height: 100vh;
+}
+.App {
+  background-color: var(--color-black) ;
+  color: var(--color-white);
 }
 
-.movie-card {
-  background-color: #41644a;
-  color: #263a29;
-  padding: 20px;
-  margin-bottom: 20px;
+.search-input {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: var(--color-white);
+  border: none;
+  color: var(--color-black);
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  transition: all ease-in-out .5s;
+  margin-right: -2rem;
 }
 
-.movie-card img {
-  max-width: 100%;
-  height: auto;
+.search-input:hover, .search-input:focus {
+  box-shadow: 0 0 1em #00000013;
 }
 
-.movie-card .card-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.movie-card .card-text {
-  margin-top: 10px;
-}
-
-.movie-card .card-link {
-  display: flex;
-  justify-content: center;
-/*   margin-top: 10px; */
-  color: #e86a33;
-}
-
-.form-container {
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-.form-container .form-group {
-  margin-bottom: 10px;
-}
-
-.form-container .input {
-  display: inline-block;
-  width: calc(50% - 15px); /* Adjust the width as needed */
-  margin-right: 15px;
-}
-
-.form-container .btn {
-  display: inline-block;
-  vertical-align: top;
+.search-input:focus {
+  outline: none;
+  background-color: var(--color-white);
 }
 
 .pagination {
@@ -61,17 +45,16 @@
 
 .pagination .btn {
   margin: 0 5px;
-  color: #e86a33;
+  color: var(--color-purple);
 }
 
 .btn{
-    background-color: #e86a33 !important;
-    color: #f2e3db !important;
+    background-color: var(--color-purple) !important;
+    color: var(--color-white) !important;
     font-weight: bolder;
     font-size: largeer;
     letter-spacing: 0.1rem;
     border-radius: 0.5rem;
     border: none;
     margin-top: 0px;
-/*     margin: 0 5px; */
 }

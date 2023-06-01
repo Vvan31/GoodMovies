@@ -1,7 +1,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
 .App {
-  background-color: #f2e3db;
+  background-color: #303030;
   min-height: 100vh;
 }
 
@@ -9,23 +9,25 @@
   padding: 20px;
   margin-top: 10px;
 }
-
 h5 {
   margin-bottom: 20px;
 }
-
+.card{
+  background-color: #ffffff;
+  color: #2e2e2e;
+  box-shadow: 0 0 10px 0px #263a29;
+}
 .plot {
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: #263a29;
-  color: #f2e3db;
+  color: #2e2e2e;
 }
 
 .review {
   margin-top: 20px;
   margin-bottom: 20px;
   background-color: #41644a;
-  color: #f2e3db;
+  color: #3a3a39;
   box-shadow: 0 0 10px 0px #263a29;
 }
 
@@ -50,7 +52,7 @@ h5 {
 
 .btn {
   background-color: #e86a33;
-  color: #f2e3db;
+  color: #303030;
   border: none;
   box-shadow: 0 0 10px 0px #263a29;
   text-decoration: none;

@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner'; // Import the Spinner component
+
 import '../style/movie-list.css';
 import { animateScroll } from 'react-scroll';
 
@@ -22,28 +24,33 @@ const MoviesList = (props) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [entriesPerPage, setEntriesPerPage] = useState(0);
   const [currentSearchMode, setCurrentSearchMode] = useState('');
-
+  const [loading, setLoading] = useState(false); 
   const scrollToTop = useCallback(() => {
     animateScroll.scrollToTop({
       duration: 100,
       smooth: 'easeOutQuad',
     });
   }, []);
-
+ // This function will be called when the user clicks on the "Next" page button
+ // It will retrieve the next page of movies from the API
   const retrieveMovies = useCallback(async () => {
     setCurrentSearchMode('');
     try {
+      setLoading(true);
       const response = await MovieDataService.getAll(currentPage);
       const { movies: fetchedMovies, page, entries_per_page } = response.data;
       setMovies(fetchedMovies);
       setCurrentPage(page);
       setEntriesPerPage(entries_per_page);
+      setLoading(false);
+      console.log(loading);
       scrollToTop();
     } catch (error) {
       console.log(error);
+      setLoading(false); 
     }
   }, [currentPage, scrollToTop]);
-
+ // This function will be called once to retrieve all the ratings from the API
   const retrieveRatings = useCallback(async () => {
     try {
       const response = await MovieDataService.getRatings();
@@ -81,12 +88,12 @@ const MoviesList = (props) => {
     },
     [currentPage]
   );
-
+ // This function will be called when the user clicks on the "Search" button
   const findByTitle = useCallback(async () => {
     setCurrentSearchMode('findByTitle');
     await find(searchTitle, 'title');
   }, [searchTitle, find]);
-
+  // This function will be called when the user clicks on the "Apply Filter" button
   const findByRating = useCallback(async () => {
     setCurrentSearchMode('findByRating');
     if (searchRating === 'All Ratings') {
@@ -95,7 +102,8 @@ const MoviesList = (props) => {
       await find(searchRating, 'rated');
     }
   }, [searchRating, find, retrieveMovies]);
-
+ // This function will be called when the user clicks on the "Next" page button
+ // It will retrieve the next page of movies from the API depending on the current search mode
   const retrieveNextPage = useCallback(async () => {
     if (currentSearchMode === 'findByTitle') {
       await findByTitle();
@@ -106,6 +114,8 @@ const MoviesList = (props) => {
     }
   }, [currentSearchMode, findByTitle, findByRating, retrieveMovies]);
 
+ // This useEffect will be called every time the currentPage changes
+ // It will retrieve the next page of movies from the API
   useEffect(() => {
     retrieveNextPage();
   }, [currentPage, retrieveNextPage]);
@@ -122,6 +132,7 @@ const MoviesList = (props) => {
                   placeholder="Search by title"
                   value={searchTitle}
                   onChange={onChangeSearchTitle}
+                  className='search-input'
                 />
               </Form.Group>
               <Button variant="primary" type="button" onClick={findByTitle}>
@@ -130,13 +141,13 @@ const MoviesList = (props) => {
             </Col>
             <Col xs={7} sm={5} className="d-flex mb-2">
               <Form.Group className="flex-grow-1 mr-2">
-                <Form.Control as="select" onChange={onChangeSearchRating}>
+                <Form.Select as="select" onChange={onChangeSearchRating} className='search-input'>
                   {ratings.map((rating) => (
                     <option value={rating} key={rating}>
                       {rating}
                     </option>
                   ))}
-                </Form.Control>
+                </Form.Select>
               </Form.Group>
               <Button variant="primary" type="button" onClick={findByRating} className="btn">
                 Apply Filter
@@ -145,9 +156,15 @@ const MoviesList = (props) => {
           </Row>
         </Form>
         <Row>
-          {movies.map((movie) => (
-            <MovieCard movie={movie} key={movie.id} />
-          ))}
+          {loading ? (
+            <div className="spinner-container">
+              <Spinner animation="border" variant="primary" />
+            </div>
+          ):(
+            movies.map((movie) => (
+              <MovieCard movie={movie} key={movie.id} />
+            ))
+          )}
         </Row>
         <br />
         <div className="pagination">

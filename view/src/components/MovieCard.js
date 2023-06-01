@@ -10,7 +10,7 @@ const MovieCard = (props) => {
   
   const [redirectToMovie, setRedirectToMovie] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  
+
   const handleClick = () => {
     setRedirectToMovie(true);
   }
@@ -26,11 +26,11 @@ const MovieCard = (props) => {
   
   return (
     <Col key={_id} className="movie-card">
-      <Card style={{ width: '18rem' }}>
+      <Card className='card' style={{ width: '20rem' }}>
         {movie.poster ? (
-          <Card.Img  onClick={handleClick} className="poster" src={poster + '/100px180'} />
+          <Card.Img variant="top" onClick={handleClick} className="poster" src={poster + '/100px180'} />
         ) : (
-          <Card.Img  onClick={handleClick} className="poster" src={'https://media.giphy.com/media/x5XGS2XRUcYtc9C2fp/giphy.gif'} />
+          <Card.Img variant="top" onClick={handleClick} className="poster" src={'https://media.giphy.com/media/x5XGS2XRUcYtc9C2fp/giphy.gif'} />
         )}
         {isSaved && (
           <div className="save-button">Saved</div>
